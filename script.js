@@ -24,3 +24,19 @@ function clearDisplay() {
     displayValue = '';
     document.getElementById('result').value = displayValue;
 }
+
+function calculateResult() {
+    try {
+        // Use JavaScript's eval() function to calculate the result
+        // Note: eval() can be dangerous in some contexts, but for a simple calculator it's OK
+        const result = eval(displayValue);
+        
+        // Update the display with the result
+        displayValue = result.toString();
+        document.getElementById('result').value = displayValue;
+    } catch (error) {
+        // Handle errors (like division by zero)
+        document.getElementById('result').value = 'Error';
+        displayValue = '';
+    }
+}
