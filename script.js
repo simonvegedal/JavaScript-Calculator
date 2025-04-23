@@ -25,6 +25,7 @@ function clearDisplay() {
     document.getElementById('result').value = displayValue;
 }
 
+// Function to calculate the result
 function calculateResult() {
     try {
         // Use JavaScript's eval() function to calculate the result
@@ -40,3 +41,28 @@ function calculateResult() {
         displayValue = '';
     }
 }
+
+// Step 4: Refinements and additional features
+
+// Add keyboard support
+document.addEventListener('keydown', function(event) {
+    const key = event.key;
+    
+    // Handle number keys and operators
+    if (/[0-9]/.test(key) || ['+', '-', '*', '/', '.'].includes(key)) {
+        appendToDisplay(key);
+    } 
+    // Handle Enter key as equals
+    else if (key === 'Enter') {
+        calculateResult();
+    } 
+    // Handle Escape key as clear
+    else if (key === 'Escape') {
+        clearDisplay();
+    }
+    // Handle Backspace
+    else if (key === 'Backspace') {
+        displayValue = displayValue.slice(0, -1);
+        document.getElementById('result').value = displayValue;
+    }
+});
